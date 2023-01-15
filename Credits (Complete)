@@ -1,0 +1,85 @@
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+// Get card number
+    long length = get_long("Number: ");
+    // The length
+    int digits = 0;
+    long number = length;
+    while (number > 0)
+    {
+        number = number / 10;
+        digits++;
+    }
+    // Invalid
+    int num1, num2, num3, num4, num5, num6, num7, num8, num9, num10, num11, num12, num13, num14, num15, num16;
+    if (digits == 16 || digits == 15 || digits == 13)
+    {
+        num1 = ((length % 100) / 10)*2;
+        num2 = ((length % 10000) / 1000)*2;
+        num3 = ((length % 1000000) / 100000)*2;
+        num4 = ((length % 100000000) / 10000000)*2;
+        num5 = ((length % 10000000000) / 1000000000)*2;
+        num6 = ((length % 1000000000000) / 100000000000)*2;
+        num7 = ((length % 100000000000000) / 10000000000000)*2;
+        num8 = ((length % 10000000000000000) / 1000000000000000)*2;
+
+        int numb1 = ((num1 % 100) / 10) + (num1 % 10);
+        int numb2 = ((num2 % 100) / 10) + (num2 % 10);
+        int numb3 = ((num3 % 100) / 10) + (num3 % 10);
+        int numb4 = ((num4 % 100) / 10) + (num4 % 10);
+        int numb5 = ((num5 % 100) / 10) + (num5 % 10);
+        int numb6 = ((num6 % 100) / 10) + (num6 % 10);
+        int numb7 = ((num7 % 100) / 10) + (num7 % 10);
+        int numb8 = ((num8 % 100) / 10) + (num8 % 10);
+
+        int sum1 = numb1 + numb2 + numb3 + numb4 + numb5 + numb6 + numb7 + numb8;
+
+        num9 = (length % 10);
+        num10 = ((length % 1000) / 100);
+        num11 = ((length % 100000) / 10000);
+        num12 = ((length % 10000000) / 1000000);
+        num13 = ((length % 1000000000) / 100000000);
+        num14 = ((length % 100000000000) / 10000000000);
+        num15 = ((length % 10000000000000) / 1000000000000);
+        num16 = ((length % 1000000000000000) / 100000000000000);
+
+        int sum2 = num9 + num10 + num11 + num12 + num13 + num14 + num15 + num16;
+        int sum3 = sum1 + sum2;
+        if (sum3 % 10 != 0)
+        {
+            printf ("INVALID\n");
+            return 0;
+        }
+    }
+
+    // get first two digits
+    long digits2 = length;
+    do
+    {
+        digits2 = digits2 / 10;
+    }
+    while (digits2 > 100);
+        // Check if length is valid
+
+    if ((digits == 13 || digits == 16) && (digits2 / 10 == 4))
+    {
+        printf("VISA\n");
+    }
+    else if (digits == 15 && (digits2 / 10 ==3) && (digits2 % 10 == 4 || digits2 % 10 == 7))
+    {
+        printf("AMEX\n");
+    }
+    else if ((digits == 16 && (digits2 / 10 == 5)) && ((digits2 % 10 == 1) || (digits2 % 10 == 2) || (digits2 % 10 == 3) || (digits2 % 10 == 4) || (digits2 % 10 == 5)))
+    {
+        printf("MASTERCARD\n");
+    }
+    else
+    {
+        printf("INVALID\n");
+        return 0;
+    }
+
+}
